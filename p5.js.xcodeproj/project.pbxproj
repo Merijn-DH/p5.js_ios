@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B6E765F1F97C80A00D3212E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2B6E765E1F97C80A00D3212E /* README.md */; };
 		2B85962B1F916C4200AA7480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85962A1F916C4200AA7480 /* AppDelegate.swift */; };
 		2B85962D1F916C4200AA7480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85962C1F916C4200AA7480 /* ViewController.swift */; };
 		2B8596301F916C4200AA7480 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B85962E1F916C4200AA7480 /* iPad.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B6E765E1F97C80A00D3212E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2B8596271F916C4100AA7480 /* p5.js.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p5.js.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B85962A1F916C4200AA7480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B85962C1F916C4200AA7480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		2B85961E1F916C4100AA7480 = {
 			isa = PBXGroup;
 			children = (
+				2B6E765E1F97C80A00D3212E /* README.md */,
 				2B8596291F916C4100AA7480 /* p5.js */,
 				2B8596411F916C4200AA7480 /* p5.jsTests */,
 				2B85964C1F916C4200AA7480 /* p5.jsUITests */,
@@ -250,6 +253,7 @@
 			files = (
 				2BF8F9951F936A4F00D67281 /* iPhone.storyboard in Resources */,
 				2B8596381F916C4200AA7480 /* LaunchScreen.storyboard in Resources */,
+				2B6E765F1F97C80A00D3212E /* README.md in Resources */,
 				2B8596351F916C4200AA7480 /* Assets.xcassets in Resources */,
 				2B8596301F916C4200AA7480 /* iPad.storyboard in Resources */,
 			);
