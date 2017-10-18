@@ -8,13 +8,13 @@ I don't know if anyone will ever bother looking at this code, but please keep in
 # To do list
 * clean up code
 
-## Known bugs
+### Known bugs
 * (fixed) Difference between " and “, ' and ’, causes javascript errors
 * (fixed) Project menu shows up behind the keyboard (iPhone)
 * (fixed) Syntax highlighting doesn't update when text is pasted
 * unable to scroll in the webView
 
-## New features
+### New features
 * (added) ES6
 * (added) DOM_JS should be automatically imported
 * Multiple js files per project
