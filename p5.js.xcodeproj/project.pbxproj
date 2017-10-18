@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		2B85962B1F916C4200AA7480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85962A1F916C4200AA7480 /* AppDelegate.swift */; };
 		2B85962D1F916C4200AA7480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85962C1F916C4200AA7480 /* ViewController.swift */; };
-		2B8596301F916C4200AA7480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B85962E1F916C4200AA7480 /* Main.storyboard */; };
+		2B8596301F916C4200AA7480 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B85962E1F916C4200AA7480 /* iPad.storyboard */; };
 		2B8596331F916C4200AA7480 /* p5_js.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B8596311F916C4200AA7480 /* p5_js.xcdatamodeld */; };
 		2B8596351F916C4200AA7480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B8596341F916C4200AA7480 /* Assets.xcassets */; };
 		2B8596381F916C4200AA7480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B8596361F916C4200AA7480 /* LaunchScreen.storyboard */; };
 		2B8596431F916C4200AA7480 /* p5_jsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8596421F916C4200AA7480 /* p5_jsTests.swift */; };
 		2B85964E1F916C4200AA7480 /* p5_jsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85964D1F916C4200AA7480 /* p5_jsUITests.swift */; };
+		2BB945AC1F97636A00A45C7B /* syntaxHighlighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB945AB1F97636A00A45C7B /* syntaxHighlighting.swift */; };
+		2BDC09781F97603000416700 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC09771F97603000416700 /* Extentions.swift */; };
+		2BF6720B1F9281AF00884E74 /* CoreFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6720A1F9281AF00884E74 /* CoreFunctions.swift */; };
+		2BF8F9951F936A4F00D67281 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF8F9941F936A4F00D67281 /* iPhone.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +42,7 @@
 		2B8596271F916C4100AA7480 /* p5.js.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p5.js.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B85962A1F916C4200AA7480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B85962C1F916C4200AA7480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2B85962F1F916C4200AA7480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2B85962F1F916C4200AA7480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		2B8596321F916C4200AA7480 /* p5_js.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = p5_js.xcdatamodel; sourceTree = "<group>"; };
 		2B8596341F916C4200AA7480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B8596371F916C4200AA7480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		2B8596491F916C4200AA7480 /* p5.jsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = p5.jsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B85964D1F916C4200AA7480 /* p5_jsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = p5_jsUITests.swift; sourceTree = "<group>"; };
 		2B85964F1F916C4200AA7480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BB945AB1F97636A00A45C7B /* syntaxHighlighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syntaxHighlighting.swift; sourceTree = "<group>"; };
+		2BDC09771F97603000416700 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		2BF6720A1F9281AF00884E74 /* CoreFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreFunctions.swift; sourceTree = "<group>"; };
+		2BF8F9941F936A4F00D67281 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhone.storyboard; path = Base.lproj/iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +107,13 @@
 		2B8596291F916C4100AA7480 /* p5.js */ = {
 			isa = PBXGroup;
 			children = (
+				2BF6720A1F9281AF00884E74 /* CoreFunctions.swift */,
+				2BDC09771F97603000416700 /* Extentions.swift */,
 				2B85962A1F916C4200AA7480 /* AppDelegate.swift */,
+				2BB945AB1F97636A00A45C7B /* syntaxHighlighting.swift */,
 				2B85962C1F916C4200AA7480 /* ViewController.swift */,
-				2B85962E1F916C4200AA7480 /* Main.storyboard */,
+				2B85962E1F916C4200AA7480 /* iPad.storyboard */,
+				2BF8F9941F936A4F00D67281 /* iPhone.storyboard */,
 				2B8596341F916C4200AA7480 /* Assets.xcassets */,
 				2B8596361F916C4200AA7480 /* LaunchScreen.storyboard */,
 				2B8596391F916C4200AA7480 /* Info.plist */,
@@ -191,11 +203,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Merijn den Houting";
 				TargetAttributes = {
 					2B8596261F916C4100AA7480 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = FW2S3A92MN;
 						ProvisioningStyle = Automatic;
 					};
 					2B85963D1F916C4200AA7480 = {
@@ -235,9 +248,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BF8F9951F936A4F00D67281 /* iPhone.storyboard in Resources */,
 				2B8596381F916C4200AA7480 /* LaunchScreen.storyboard in Resources */,
 				2B8596351F916C4200AA7480 /* Assets.xcassets in Resources */,
-				2B8596301F916C4200AA7480 /* Main.storyboard in Resources */,
+				2B8596301F916C4200AA7480 /* iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +279,9 @@
 				2B8596331F916C4200AA7480 /* p5_js.xcdatamodeld in Sources */,
 				2B85962D1F916C4200AA7480 /* ViewController.swift in Sources */,
 				2B85962B1F916C4200AA7480 /* AppDelegate.swift in Sources */,
+				2BDC09781F97603000416700 /* Extentions.swift in Sources */,
+				2BB945AC1F97636A00A45C7B /* syntaxHighlighting.swift in Sources */,
+				2BF6720B1F9281AF00884E74 /* CoreFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,12 +317,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2B85962E1F916C4200AA7480 /* Main.storyboard */ = {
+		2B85962E1F916C4200AA7480 /* iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2B85962F1F916C4200AA7480 /* Base */,
 			);
-			name = Main.storyboard;
+			name = iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		2B8596361F916C4200AA7480 /* LaunchScreen.storyboard */ = {
@@ -329,7 +346,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -337,7 +356,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -380,7 +403,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -388,7 +413,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -418,11 +447,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FW2S3A92MN;
 				INFOPLIST_FILE = p5.js/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.merijndh.p5-js";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -430,11 +461,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = FW2S3A92MN;
 				INFOPLIST_FILE = p5.js/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.merijndh.p5-js";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -511,6 +544,7 @@
 				2B8596541F916C4200AA7480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B8596551F916C4200AA7480 /* Build configuration list for PBXNativeTarget "p5.jsTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +553,7 @@
 				2B8596571F916C4200AA7480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B8596581F916C4200AA7480 /* Build configuration list for PBXNativeTarget "p5.jsUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +562,7 @@
 				2B85965A1F916C4200AA7480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
