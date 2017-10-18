@@ -5,6 +5,10 @@ I noticed there are quite some people that prefer an iPad over a laptop because 
 
 I don't know if anyone will ever bother looking at this code, but please keep in mind I am not a proffesional app creator and I therefore don't really know how things are 'suppost' to be done but rather I know how to do things in a way that they'll work.
 
+# App store
+The app can be found here:
+https://itunes.apple.com/app/p5-js-editor/id1296619254
+
 # To do list
 * clean up code
 
