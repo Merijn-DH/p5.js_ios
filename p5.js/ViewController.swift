@@ -368,4 +368,12 @@ class ViewController: UIViewController, UITextViewDelegate, UITableViewDataSourc
         }
         webView.loadHTMLString("<font color='#FF0000'>" + error.localizedDescription + "</font>", baseURL: nil)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
 }
