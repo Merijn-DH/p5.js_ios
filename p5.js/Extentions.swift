@@ -12,6 +12,17 @@ extension UIViewController {
             return true
         }
     }
+    
+    func prepareErrorLogger(_ html:String, forProject:String) {
+        var modifiedHTML:String = html
+        modifiedHTML = "<script type='text/javascript'>var errorLine = -1; window.onerror = function (errorMsg, url, lineNumber) { errorLine = lineNumber; document.write('<br><font color=\"#F00\" style=\"font-size: 15px; font-family: monospace;\">Error: ' + errorMsg + '<br> Line: ' + lineNumber + '</font><br><br><hr><br>');}</script>" + modifiedHTML
+        modifiedHTML = "<style>html, body, canvas { -webkit-touch-callout: none; }</style>" + modifiedHTML
+        core.saveData(toFile: "index.html", data: modifiedHTML, forProject: forProject)
+    }
+    
+    func deprepareErrorLogger(_ html:String, forProject: String) {
+        core.saveData(toFile: "index.html", data: html, forProject: forProject)
+    }
 }
 
 extension String {

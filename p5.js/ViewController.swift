@@ -29,13 +29,13 @@ class ViewController: UIViewController, UITextViewDelegate, UITableViewDataSourc
         super.viewDidLoad()
         
         // check if there are projects in memory
-        if (core.returnNames().count == 0) {
+        if (core.returnProjects().count == 0) {
             // if not, use default js and html strings
             codeField.text = js
             save()
         } else {
             // if there is, load the first one
-            projectname = core.returnNames()[0];
+            projectname = core.returnProjects()[0];
             load()
         }
         
@@ -95,12 +95,13 @@ class ViewController: UIViewController, UITextViewDelegate, UITableViewDataSourc
     }
     
     func save() {
-        core.saveData(js,html: html,forName: projectname)
+        core.saveData(toFile: "sketch.js", data: js, forProject: projectname)
+        core.saveData(toFile: "index.html", data: html, forProject: projectname)
     }
     
     func load() {
-        js = core.loadData("js", forName: projectname)
-        html = core.loadData("html", forName: projectname)
+        js = core.loadData("sketch.js", forProject: projectname)
+        html = core.loadData("index.html", forProject: projectname)
         codeField.text = js;
         mode = "js";
         syntaxHighlighting(codeField: self.codeField, mode: mode, line: -1, reset: true)
@@ -152,12 +153,18 @@ class ViewController: UIViewController, UITextViewDelegate, UITableViewDataSourc
             js = codeField.text
         }
         
-        webView.loadRequest(URLRequest(url: URL(string: "about:blank")!))
+        URLCache.shared.removeAllCachedResponses()
+        URLCache.shared.diskCapacity = 0
+        URLCache.shared.memoryCapacity = 0
         
-        var string:String! = "<style>html, body, canvas { -webkit-touch-callout: none; }</style>" + html
-        let errorScript = "<script type='text/javascript'>var errorLine = -1; window.onerror = function (errorMsg, url, lineNumber) { errorLine = lineNumber; document.write('<br><font color=\"#F00\" style=\"font-size: 15px; font-family: monospace;\">Error: ' + errorMsg + '<br> Line: ' + lineNumber + '</font><br><br><hr><br>');}</script>";
-        string = errorScript + "<script type='text/javascript'>" + js + "</script>" + string;
-        webView.loadHTMLString(string, baseURL: nil)
+        let documents:String = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+        let path = documents + "/" + projectname + "/index.html"
+    
+        if webView.request == nil {
+            webView.loadRequest(URLRequest(url: URL(fileURLWithPath: path)))
+        } else {
+            webView.reload();
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -262,13 +269,13 @@ class ViewController: UIViewController, UITextViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return core.returnNames().count+1;
+        return core.returnProjects().count+1;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if indexPath.row < core.returnNames().count {
-            cell.textLabel?.text = core.returnNames()[indexPath.row]
+        if indexPath.row < core.returnProjects().count {
+            cell.textLabel?.text = core.returnProjects()[indexPath.row]
         } else {
             cell.textLabel?.text = "+ new project"
         }
@@ -281,13 +288,13 @@ class ViewController: UIViewController, UITextViewDelegate, UITableViewDataSourc
             newProject()
         } else {
             projectMenu.isHidden = true
-            projectname = core.returnNames()[indexPath.row]
+            projectname = core.returnProjects()[indexPath.row]
             load()
         }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.row < core.returnNames().count
+        return indexPath.row < core.returnProjects().count
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
@@ -307,10 +314,10 @@ class ViewController: UIViewController, UITextViewDelegate, UITableViewDataSourc
     
     func deleteItem(_ index:Int) {
         
-        let alert = UIAlertController(title: "Delete project", message: "Are you sure you want to delete '" + core.returnNames()[index] + "'", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Delete project", message: "Are you sure you want to delete '" + core.returnProjects()[index] + "'", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak alert] (_) in
-            core.deleteData(core.returnNames()[index])
+            core.deleteData(core.returnProjects()[index])
             DispatchQueue.main.async{
                 self.projectTable.reloadData()
             }
@@ -328,14 +335,14 @@ class ViewController: UIViewController, UITextViewDelegate, UITableViewDataSourc
         let alert = UIAlertController(title: "Rename project", message: "Give your project a new name", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
-            textField.text = core.returnNames()[index]
+            textField.text = core.returnProjects()[index]
         }
         
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak alert] (_) in
-            if (self.projectname == core.returnNames()[index]) {
+            if (self.projectname == core.returnProjects()[index]) {
                 self.projectname = (alert?.textFields![0].text)!;
             }
-            core.renameData((alert?.textFields![0].text)!, forName: core.returnNames()[index])
+            core.renameData((alert?.textFields![0].text)!, forProject: core.returnProjects()[index])
             DispatchQueue.main.async{
                 self.projectTable.reloadData()
             }
@@ -346,10 +353,12 @@ class ViewController: UIViewController, UITextViewDelegate, UITableViewDataSourc
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
+        prepareErrorLogger(html, forProject: projectname);
         runButton.setTitle("loading..", for: .normal)
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
+        deprepareErrorLogger(html, forProject: projectname);
         runButton.setTitle("Run code", for: .normal)
         if (isIphone()) {
             webViewContainer.isHidden = false

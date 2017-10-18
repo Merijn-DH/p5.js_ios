@@ -12,168 +12,70 @@ import Foundation
 struct core {
     
     // save a project's javascript and html
-    static func saveData(_ js:String, html:String, forName: String) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        
-        if projectExists(forName) {
-            // update existing entry
-            var storedItems = [NSManagedObject]()
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
+    static func saveData(toFile:String, data:String, forProject: String) {
+        let documents:String =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+        let directory = documents + "/" + forProject + "/"
+        if !projectExists(forProject) {
             do {
-                let results = try context.fetch(fetchRequest)
-                storedItems = results as! [NSManagedObject]
-                for i in 0 ..< storedItems.count {
-                    let item = storedItems[i]
-                    if item.value(forKey: "name") as! String == forName {
-                        item.setValue(js, forKey: "js")
-                        item.setValue(html, forKey: "html")
-                        do {
-                            try context.save()
-                        } catch {
-                            NSLog("could not save")
-                        }
-                    }
-                }
-            } catch {
-                NSLog("error loading")
-            }
-        } else {
-            // create new entry
-            let entity = NSEntityDescription.entity(forEntityName: "Project", in: context)
-            let item = NSManagedObject(entity: entity!, insertInto: context)
-            item.setValue(forName, forKey: "name")
-            item.setValue(js, forKey: "js")
-            item.setValue(html, forKey: "html")
-            do {
-                try context.save()
-            } catch {
-                NSLog("[error first record save]")
-            }
-            
+                    try FileManager.default.createDirectory(atPath: directory, withIntermediateDirectories: false, attributes: nil)
+            } catch { print("error creating directory")}
         }
+        do {
+            try data.write(toFile: directory + toFile, atomically: false, encoding: .utf8)
+        } catch { print("error saving file") }
     }
     
     // rename a project
-    static func renameData(_ newName:String, forName: String) {
-            var storedItems = [NSManagedObject]()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
-            do {
-                let results = try context.fetch(fetchRequest)
-                storedItems = results as! [NSManagedObject]
-                for i in 0 ..< storedItems.count {
-                    let item = storedItems[i]
-                    if item.value(forKey: "name") as! String == forName {
-                        item.setValue(newName, forKey: "name")
-                        do {
-                            try context.save()
-                        } catch {
-                            NSLog("could not save")
-                        }
-                    }
-                }
-            } catch {
-                NSLog("error loading")
-            }
+    static func renameData(_ newName:String, forProject: String) {
+        let documents:String =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+        let directory = documents + "/" + forProject + "/"
+        let newDirectory = documents + "/" + newName + "/"
+        print(directory)
+        print(newDirectory)
+        do {
+            try FileManager.default.moveItem(at: URL(fileURLWithPath: directory), to: URL(fileURLWithPath: newDirectory))
+        } catch { print("error saving file") }
     }
     
     // fetch javascript or html from a project (forKey is "js" or "html")
-    static func loadData(_ forKey:String, forName:String) -> String {
-        var storedItems = [NSManagedObject]()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
+    static func loadData(_ forFile:String, forProject:String) -> String {
+        let documents:String =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+        let filePath = documents + "/" + forProject + "/" + forFile
         do {
-            let results = try context.fetch(fetchRequest)
-            storedItems = results as! [NSManagedObject]
-            if storedItems.count == 0 {
-                return "[no data]"
-            }
-            for i in 0 ..< storedItems.count {
-                let item = storedItems[i]
-                if item.value(forKey: "name") as! String == forName {
-                    return item.value(forKey: forKey) as! String
-                }
-            }
-            return "[no data]"
-        } catch {
-            NSLog("error loading")
-            return ""
-        }
+            let text = try String(contentsOfFile: filePath, encoding: .utf8)
+            return(text);
+        } catch { print("error loading file") }
+        return ""
     }
     
     // check if a project exists
-    static func projectExists(_ forName:String) -> Bool {
-        var storedItems = [NSManagedObject]()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
-        do {
-            let results = try context.fetch(fetchRequest)
-            storedItems = results as! [NSManagedObject]
-            if storedItems.count == 0 {
-                return false
+    static func projectExists(_ forProject:String) -> Bool {
+        let projects = returnProjects()
+        for i in 0 ..< projects.count {
+            if projects[i] == forProject {
+                return true
             }
-            for i in 0 ..< storedItems.count {
-                let item = storedItems[i]
-                if item.value(forKey: "name") as! String == forName {
-                    return true
-                }
-            }
-            return false
-        } catch {
-            NSLog("error loading")
-            return false
         }
+        return false
     }
     
     // get project names
-    static func returnNames() -> [String] {
-        var storedItems = [NSManagedObject]()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
-        do {
-            let results = try context.fetch(fetchRequest)
-            storedItems = results as! [NSManagedObject]
-            if storedItems.count == 0 {
-                return []
+    static func returnProjects() -> [String] {
+        let documents:String = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path + "/"
+        guard var paths : [String] = try? FileManager.default.contentsOfDirectory(atPath: documents) else { return []; }
+        for i in (0 ..< paths.count).reversed()  {
+            if paths[i].atIndex(0) == "." {
+                paths.remove(at: i)
             }
-            
-            var types = [String]()
-            for i in 0 ..< storedItems.count {
-                let item = storedItems[i]
-                types.append(item.value(forKey: "name") as! String)
-            }
-            return types
-        } catch {
-            NSLog("error loading")
-            return []
         }
+        return paths
     }
     
-    static func deleteData(_ name:String) {
-        var storedItems = [NSManagedObject]()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
+    static func deleteData(_ forProject:String) {
+        let documents:String =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+        let directory = documents + "/" + forProject + "/"
         do {
-            let results = try context.fetch(fetchRequest)
-            storedItems = results as! [NSManagedObject]
-            
-            for i in 0 ..< storedItems.count {
-                NSLog(String(i))
-                let item = storedItems[i]
-                if item.value(forKey: "name") as! String == name {
-                    context.delete(storedItems[i])
-                    try context.save()
-                    break
-                }
-            }
-        } catch {
-            NSLog("error deleting")
-        }
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: directory))
+        } catch { print("error saving file") }
     }
 }
