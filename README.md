@@ -14,19 +14,13 @@ https://itunes.apple.com/app/p5-js-editor/id1296619254
 * check if devices memory is full
 
 ### Known bugs
-* (fixed) Difference between " and “, ' and ’, causes javascript errors
-* (fixed) Project menu shows up behind the keyboard (iPhone)
-* (fixed) Syntax highlighting doesn't update when text is pasted
+* extra keyboard row appears offset on the iPhone X
 * unable to scroll in the webView
 * canvas is selectable in webView (very irritating)
 * prevent user from entering non-alphanumerical project names (as it will be a folder)
 
 ### New features
-* (added) ES6
-* (added) DOM_JS should be automatically imported
-* (working on atm) Multiple js files per project
-* sound library should be imported by default
-* commonly used character keyboard-row
+* line numbers
 * Download zip file / push to github
 * Open zip file / clone from github
 * autocomplete
