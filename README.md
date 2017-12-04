@@ -8,6 +8,8 @@ I don't know if anyone will ever bother looking at this code, but please keep in
 # App store
 The app can be found here:
 https://itunes.apple.com/app/p5-js-editor/id1296619254
+Current app store version: 1.0.1
+Current development version: 1.1
 
 # To do list
 * clean up code
@@ -20,7 +22,8 @@ https://itunes.apple.com/app/p5-js-editor/id1296619254
 * prevent user from entering non-alphanumerical project names (as it will be a folder)
 
 ### New features
-* line numbers
+* line numbers (added in version 1.1)
+* stop button
 * Download zip file / push to github
 * Open zip file / clone from github
 * autocomplete
